@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "zalza Book",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book."
+  },
+  {
+    "objectID": "index.html#software-conventions",
+    "href": "index.html#software-conventions",
+    "title": "zalza Book",
+    "section": "Software conventions",
+    "text": "Software conventions\n\n1 + 1\n\n2\n\n\nTo learn more about Quarto books visit https://quarto.org/docs/books."
+  },
+  {
+    "objectID": "index.html#acknowledgments",
+    "href": "index.html#acknowledgments",
+    "title": "zalza Book",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\nBlah, blah, blah…"
+  },
+  {
+    "objectID": "main2.html",
+    "href": "main2.html",
+    "title": "1  TUGAS KLASIFIKASI DATA PROYEK SAINS DATA - B",
+    "section": "",
+    "text": "2 — DATA UNDERSTANDING —\nAdapun hal - hal yang perlu dilakukan untuk memahami dataset ini, yakni 1. Mendeskripsikan setiap fitur pada data * tipe data * deskripsi data 2. Mengidentifikasi missing values setiap fitur atau kolom 3. Eksplorasi data (grafikan fitur) 4. Mengidentifikasi outlier 5. Mengidentifikasi jumlah data (proporsi data perkelas -untuk mengetahui balancing dataset atau keseimbangan data per kelas)\nSetelah memahami data, akan dilakukan tahap preprocessing untuk menangani masalah pada data yang sudah didefinisikan pada data understanding, yakni.\nSetelah data siap, akan dilakukan : 1. Skoring tiap fitur kembali 2. Normalisasi Data 3. Skenario Percobaan Menggunakan 2 Model yakni Naive Bayes, Support Vector Machine, dan Decision Tree\nNote : Model Naive Bayes dipilih karena memiliki tingkat akurasi yang lebih baik dibandingkan model lainnya. Selengkapnya disini.\nTahap evaluasi merupakan tahap penilaian atas kebenaran data. Melalui tahap ini kita dapat mengetahui seberapa jauh suatu data dapat dipercaya.\nwith open('model_nb.pkl', 'rb') as file:\n    model_nb = pickle.load(file)\n\nfrom sklearn.metrics import accuracy_score\n\nmodel_nb.fit(zscore_training, target_train)\ny_pred_nb = model_nb.predict(zscore_testing)\ncode dilanjut pada file main.py untuk membangun sistem"
+  },
+  {
+    "objectID": "main2.html#bussiness-understanding",
+    "href": "main2.html#bussiness-understanding",
+    "title": "1  TUGAS KLASIFIKASI DATA PROYEK SAINS DATA - B",
+    "section": "1.1 — BUSSINESS UNDERSTANDING —",
+    "text": "1.1 — BUSSINESS UNDERSTANDING —\nTujuan = Untuk membangun model yang dapat memprediksi hasil dan perkembangan kanker payudara pada pasien dengan node positif. Dengan menganalisis kumpulan data kasus kanker payudara, model ini akan mempelajari pola dan korelasi untuk membuat prediksi yang akurat, sehingga memungkinkan tenaga kesehatan profesional untuk mengidentifikasi pasien berisiko tinggi dan membantu dokter memilih strategi perawatan yang lebih baik.\nKanker payudara adalah penyakit di mana sel-sel di dalam payudara berkembang tidak terkendali dan membentuk massa atau benjolan yang disebut tumor. Tumor ini dapat menjadi ganas (kanker) jika sel-selnya dapat menyebar ke bagian tubuh lain. Kanker payudara bisa terjadi pada wanita dan pria, tetapi lebih umum pada wanita.\nFaktor risiko kanker payudara termasuk genetika, usia, jenis kelamin, dan faktor lingkungan. Pemeriksaan payudara sendiri, mamografi, dan kunjungan rutin ke dokter membantu dalam deteksi dini. Gejala kanker payudara mungkin meliputi benjolan atau perubahan bentuk payudara, perubahan pada kulit, atau keluarnya cairan dari puting.\nPengobatan kanker payudara dapat melibatkan pembedahan, radioterapi, kemoterapi, dan terapi hormon, tergantung pada jenis dan stadium kanker. Deteksi dini dan perawatan yang tepat dapat meningkatkan peluang kesembuhan. Penting untuk meningkatkan kesadaran tentang kanker payudara, mendorong pemeriksaan payudara rutin, dan mendukung mereka yang mengalami penyakit ini.\nKumpulan data berisi catatan pasien dari uji coba tahun 1984-1989 yang dilakukan oleh Kelompok German Breast Cancer Study Group (GBSG) terhadap 720 pasien dengan kanker payudara nodus positif.\nReferensi data bisa diakses disini.\nDataset ini memiliki 686 data dengan rincian pelabelan sebagai berikut :\n\n\n\n\n\nLabel\n\n\nMeaning\n\n\n\n\n0\n\n\nHidup tanpa kambuh\n\n\n\n\n1\n\n\nKambuh atau kematian(sudah meninggal)\n\n\n\n\n\n1.1.1 Ciri - ciri yang digunakan untuk mengklasifikasi kanker payudara\nUntuk mendeteksi kanker payudara masyarakat German, dapat dilihat dari ciri-ciri sebagai berikut :\n\nage (age, years)\nmeno (menopausal status)\nsize (tumor size, mm)\ngrade (tumor grade)\nnodes (number of positive lymph nodes)\npgr (progesterone receptors, fmol/l)\ner (estrogen receptors, fmol/l)\nHormon (hormonal therapy)\nrfstime (recurrence free survival time; days to first of recurrence, death or last follow-up\n\nDeskripsi Fitur:\n\nage (age, years)\nIni mencatat usia pasien dalam tahun. Informasi ini membantu untuk memahami distribusi usia dalam sampel.\nmeno (menopausal status)\nIni mencatat status menopause pasien. Nilai 0 mewakili premenopause, sedangkan nilai 1 mewakili postmenopause.\nsize (tumor size, mm)\nUkuran tumor dalam milimeter. Informasi ini membantu untuk memahami seberapa besar tumor pada pasien.\ngrade (tumor grade)\nIni mencatat tingkat keparahan tumor. Menggambarkan seberapa “berat” atau “parah” tumor itu. Nilai yang lebih tinggi menunjukkan tumor yang lebih agresif atau lebih berbahaya.\nnodes (number of positive lymph nodes)\nIni mencatat jumlah nodus limfe positif pada pasien. ni memberikan informasi tentang seberapa banyak kanker menyebar ke kelenjar getah bening.\npgr (progesterone receptors, fmol/l)\nMenunjukkan kadar reseptor progesteron dalam darah pasien. Ini berkaitan dengan bagaimana hormon progesteron berinteraksi dengan sel-sel kanker.\nProgesteron adalah hormon seks yang diproduksi oleh ovarium pada wanita dan dalam jumlah kecil oleh testis pada pria. Hormon ini memainkan peran penting dalam siklus menstruasi dan kehamilan pada wanita.\ner (estrogen receptors, fmol/l)\nMenunjukkan kadar reseptor estrogen dalam darah pasien. Ini berkaitan dengan bagaimana hormon estrogen berinteraksi dengan sel-sel kanker.\nEstrogen adalah kelompok hormon steroid yang berperan penting dalam perkembangan dan fungsi sistem reproduksi pada wanita. Terdapat beberapa jenis estrogen yang diproduksi di dalam tubuh manusia, tetapi yang paling umum adalah estradiol, estron, dan estriol.\nHormon steroid adalah jenis hormon yang berasal dari lipid (lemak) dan memiliki struktur kimia yang mirip dengan steroid. Hormon steroid memainkan peran penting dalam berbagai fungsi tubuh, termasuk regulasi metabolisme, perkembangan seksual, dan respons terhadap stres.\nHormon (hormonal therapy)\nIni mencatat apakah pasien menjalani terapi hormonal atau tidak. Nilai 0 menunjukkan tidak, sementara nilai 1 menunjukkan ya.\nrfstime (recurrence free survival time; days to first of recurrence, death or last follow-up)\nIni mencatat waktu bertahan hidup bebas kekambuhan. Ini dapat diukur dalam jumlah hari dari saat rekurensi pertama, kematian, atau kunjungan tindak lanjut terakhir."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  }
+]
